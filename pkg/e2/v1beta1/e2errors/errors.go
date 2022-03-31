@@ -130,6 +130,13 @@ func FromGRPC(err error) error {
 				return New(RICControlMessageInvalid, stat.Message())
 			case e2api.Error_Cause_Ric_CALL_PROCESS_ID_INVALID:
 				return New(RICCallProcessIDInvalid, stat.Message())
+			//zhenlu added
+			case e2api.CauseRicrequest_CAUSE_RICREQUEST_CONTROL_TIMER_EXPIRED:
+				return New(RICConrolTimerExpired, stat.Message())
+			case e2api.CauseRicrequest_CAUSE_RICREQUEST_CONTROL_FAILED_TO_EXECUTE:
+				return New(RICControlFailedToExecute, stat.Message())
+			case e2api.CauseRicrequest_CAUSE_RICREQUEST_SYSTEM_NOT_READY:
+				return New(RICSystemNotReady, stat.Message())		
 			default:
 				return New(RICUnspecified, stat.Message())
 
